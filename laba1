@@ -1,0 +1,32 @@
+--1.
+let myLast mass =  last mass
+Prelude> myLast "fhgjgh"
+'h'
+--2.
+let myButLast mass = mass !!( (length mass)-2)
+Prelude>  myButLast "5789625"
+'2'
+--3.
+let elementAt mass x = mass !! (x-1)
+Prelude> elementAt [1,23,3] 2
+23
+
+(!!) :: List a -> Nat -> a
+Nil !! n = error "!!: empty list"
+l  !! n = undefined
+
+--4. 100%
+Prelude> let length' xs = sum [1 | _ <- xs]  
+Prelude> length' "gfdhfdhf"
+8
+
+
+
+-- Список задом на перёд
+reverseTmp :: List a -> List a -> List a
+reverseTmp Nil Nil = Nil
+reverseTmp Nil a = a
+reverseTmp (Cons a b) c = reverseTmp b (Cons a c)
+
+reverse :: List a -> List a
+reverse a = reverseTmp a Nil
